@@ -1,52 +1,69 @@
-// script.js
-// example of a function
-function showMessage() {
-  const message = document.getElementById("message");
-  message.textContent = "You clicked the button!";
-}
+// Progressive scroll reveals. Content remains visible when JavaScript is
+// unavailable and motion is disabled for visitors who request reduced motion.
 
-// This JavaScript code runs when the HTML page finishes loading
-// We wait for the page to load so we can be sure all HTML elements exist
+document.addEventListener('DOMContentLoaded', function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
 
-// This function runs when the page is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded means all the HTML has been loaded and parsed
-    // This is important because we need to find HTML elements with JavaScript
-    
-    console.log('JavaScript is now running!'); // This message appears in the browser's console (F12 to see it)
-    
-    // Find our button in the HTML using its ID
-    // getElementById looks for an HTML element with the specified ID
-    const button = document.getElementById('demoButton');
-    
-    // Find our message display area in the HTML using its ID
-    // This is where we'll show messages when the button is clicked
-    const messageArea = document.getElementById('messageDisplay');
-    
-    // Add a "click event listener" to our button
-    // This tells JavaScript: "When someone clicks this button, do something"
-    button.addEventListener('click', function() {
-        // This function runs every time the button is clicked
-        
-        console.log('Button was clicked!'); // Log to console for debugging
-        
-        // Create a message to display
-        const currentTime = new Date().toLocaleTimeString(); // Get current time
-        const message = 'Hello! You clicked the button at ' + currentTime;
-        
-        // Display the message in our message area
-        // textContent sets the text inside the HTML element
-        messageArea.textContent = message;
-        
-        // Add some visual feedback by changing the button text temporarily
-        button.textContent = 'Thanks for clicking!';
-        
-        // After 2 seconds, change the button text back to original
-        // setTimeout runs a function after a specified delay (in milliseconds)
-        setTimeout(function() {
-            button.textContent = 'Click Me!';
-        }, 2000); // 2000 milliseconds = 2 seconds
+  var selectors = [
+    'main > section:not(.hero)',
+    'main > figure',
+    '.visual-media-grid figure',
+    '.visual-block',
+    '.lens-item',
+    '.argument-list li',
+    '.context-event',
+    '.context-event-media',
+    '.contemporaries-card',
+    '.ontology-node',
+    '.ontology-detail',
+    '.source-row',
+    '.sort-tally > div'
+  ];
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(selectors.join(',')));
+  document.documentElement.classList.add('reveal-enabled');
+
+  items.forEach(function (item) {
+    item.classList.add('scroll-reveal');
+
+    var siblings = item.parentElement
+      ? Array.prototype.filter.call(item.parentElement.children, function (child) {
+          return items.indexOf(child) !== -1;
+        })
+      : [];
+    var siblingIndex = siblings.indexOf(item);
+    if (siblingIndex > 0) {
+      item.style.setProperty('--reveal-delay', Math.min(siblingIndex, 5) * 70 + 'ms');
+    }
+  });
+
+  var pending = items.slice();
+  var frame = null;
+
+  function revealVisibleItems() {
+    frame = null;
+    var revealLine = window.innerHeight * 0.93;
+
+    pending = pending.filter(function (item) {
+      var bounds = item.getBoundingClientRect();
+      var isVisible = bounds.top < revealLine && bounds.bottom > 0;
+      if (isVisible) item.classList.add('is-revealed');
+      return !isVisible;
     });
+
+    if (!pending.length) {
+      window.removeEventListener('scroll', requestRevealCheck);
+      window.removeEventListener('resize', requestRevealCheck);
+    }
+  }
+
+  function requestRevealCheck() {
+    if (frame !== null) return;
+    frame = window.requestAnimationFrame(revealVisibleItems);
+  }
+
+  window.addEventListener('scroll', requestRevealCheck, { passive: true });
+  window.addEventListener('resize', requestRevealCheck);
+  requestRevealCheck();
 });
-
-

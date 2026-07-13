@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8934 --bind 127.0.0.1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{time_total}\\\\n\" http://127.0.0.1:8934/ontology.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{time_total}\\\\n\" http://127.0.0.1:8934/index.html)",
+      "Bash(pkill -f \"http.server 8934\")",
+      "Bash(curl -sIL https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/1607139751205-MRBT2LV7608ASMLD2TKS/toy+web+mock+up2.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -IL https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/1607139751205-MRBT2LV7608ASMLD2TKS/toy+web+mock+up2.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o ai-toys-listing-mockup.jpg https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/1607139751205-MRBT2LV7608ASMLD2TKS/toy+web+mock+up2.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o ai-toys-prototype.jpg https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/1607539870602-QZ4XS5IULSW4QA17C177/prototype+with+screen.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o ai-toys-digital-detail.jpg https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/6328a591-e2d5-4a42-8afa-82e4c6098109/AI+Toys+digital+detail.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o ai-toys-unboxing-mania-install.jpg https://images.squarespace-cdn.com/content/v1/52cd9799e4b00ae3ac706ed4/8c6eca69-b478-4280-81a7-61dac090f092/BLF-2022-0606-Cuchifritos-AniLiu-0080.jpg)",
+      "Bash(file *.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight *.jpg)",
+      "WebSearch",
+      "Bash(curl -sIL -H \"Referer: https://shuyicao.com/Porous-Coagulations\" \"https://freight.cargo.site/t/original/i/e83f4a45f3e0202a2eccb11d69e8217d880db312f738dfab4f001991416f1beb/VA220713_DSC7631.jpg\")",
+      "Bash(curl -s \"https://xinliu.art/the-white-stone\")",
+      "Bash(curl -sIL \"https://freight.cargo.site/w/1200/i/N1788892620731159815812520899235/The-White-Stone_FIlm-Still_02.jpg\")",
+      "Bash(curl -s \"https://www.furendai.com/on-the-future-ruins\" -o /tmp/furendai.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://www.furendai.com/cv-2024\" -o /tmp/furendai_cv.html)",
+      "Bash(curl -s \"https://www.furendai.com\" -o /tmp/furendai_home.html)",
+      "Bash(curl -s \"https://www.furendai.com/videofilm\" -o /tmp/furendai_video.html)",
+      "Bash(python3 -)",
+      "Bash(grep -o -i \".\\\\{0,60\\\\}ruin.\\\\{0,60\\\\}\" /tmp/furendai_video.html)",
+      "Bash(curl -s \"https://doreenchan.com\" -o /tmp/doreen.html)",
+      "Bash(curl -s \"https://bombmagazine.org/articles/xin-liu-by-danni-shen/\" -o /tmp/bomb.html)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o contemporaries-tan-mu-silicon.jpg https://images.squarespace-cdn.com/content/v1/603c3463cf34a07d7660d184/1730838493710-343FWIZO56AYAKKMP3LN/Tan_Mu_Artwork_+Silicon_Painting.jpg)",
+      "Bash(curl -s -H 'Accept: image/jpeg,image/png,*/*' -o contemporaries-rachel-youn-pendulum.jpg https://payload.cargocollective.com/1/20/650765/14365565/CSF---Sweeping-the-Chimney---Apr-2022-3151-Edit_670.jpg)",
+      "Bash(curl -s http://127.0.0.1:8934/index.html)",
+      "Bash(php -v)",
+      "Read(//Users/ericliu/Documents/GSAPP/Summer 2026/Methods as Practices/Precedent Study/**)",
+      "Bash(cp \"/Users/ericliu/Documents/GSAPP/Summer 2026/Methods as Practices/Precedent Study/toy1.glb\" /Users/ericliu/Documents/GitHub/cdp-methods-as-practice/models/toy.glb *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8934/models/toy.glb)",
+      "Bash(curl -s http://127.0.0.1:8934/)",
+      "Bash(node --check /Users/ericliu/Documents/GitHub/cdp-methods-as-practice/toy-scene.js)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s \"https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js\")"
+    ]
+  }
+}
